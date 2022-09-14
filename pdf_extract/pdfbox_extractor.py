@@ -109,8 +109,13 @@ class PDFBoxExtractor(ITextExtractor):
                     console=self.console,
                 )
 
-            # TODO: Add page numbers to filename if not all pages are extracted
-            with open(Path(output_folder) / f'{basename}.txt', 'w', encoding='utf-8') as outfile:
+            extracted_filename: str = (
+                f'{basename}_{first_page}-{last_page}.txt'
+                if last_page < num_pages or first_page > 1
+                else f'{basename}.txt'
+            )
+
+            with open(Path(output_folder) / extracted_filename, 'w', encoding='utf-8') as outfile:
 
                 if page_numbers:
                     outfile.write(f'# {basename}\n\n')
@@ -118,7 +123,6 @@ class PDFBoxExtractor(ITextExtractor):
                 for file in sorted(Path(temp_dir).glob('*.txt')):
                     with open(file, 'r', encoding='utf-8') as infile:
 
-                        # TODO Add page number
                         if page_numbers:
                             page_number: int = int(file.stem.split('_')[1])
                             outfile.write(f'\n## Page {page_number}\n\n')

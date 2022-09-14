@@ -71,3 +71,29 @@ def test_extract_text_with_page_numbers_generates_expected_output():
         result = Path(output_dir) / f'{file.stem}.txt'
         assert result.exists()
         assert filecmp.cmp(result, expected) is True
+
+
+@pytest.mark.java
+@pytest.mark.parametrize(
+    'input_pdf, first_page, last_page, expected',
+    [
+        ('test.pdf', 1, None, 'test.txt'),
+        ('test.pdf', 2, None, 'test_2-8.txt'),
+        ('test.pdf', 1, 4, 'test_1-4.txt'),
+        ('test.pdf', 3, 5, 'test_3-5.txt'),
+        ('test.pdf', 6, 9, 'test_6-8.txt'),
+    ],
+)
+def test_extract_text_adds_page_numbers_to_filename_if_not_all_pages_are_extracted(
+    input_pdf, first_page, last_page, expected
+):
+
+    file = test_dir / input_pdf
+
+    extractor: PDFBoxExtractor = PDFBoxExtractor()
+
+    with TemporaryDirectory() as output_dir:
+        extractor.extract_text(file, output_dir, first_page=first_page, last_page=last_page)
+
+        result = Path(output_dir) / expected
+        assert result.exists()
