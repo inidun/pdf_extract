@@ -12,7 +12,7 @@ from pdfminer.pdfinterp import PDFPageInterpreter, PDFResourceManager
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfparser import PDFParser
 
-from .interface import ITextExtractor
+from pdf_extract.interface import ITextExtractor
 
 
 class PDFMinerExtractor(ITextExtractor):

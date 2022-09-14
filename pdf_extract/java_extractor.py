@@ -14,7 +14,7 @@ from appdirs import AppDirs
 from loguru import logger
 from pkg_resources import parse_version
 
-from .interface import ITextExtractor
+from pdf_extract.interface import ITextExtractor
 
 # TODO: Fix this
 JARFILE = '../lib/pdfextract-1.0-SNAPSHOT.jar'

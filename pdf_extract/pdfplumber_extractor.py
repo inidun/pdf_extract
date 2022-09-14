@@ -5,7 +5,7 @@ from typing import Optional, Union
 import pdfplumber
 from loguru import logger
 
-from .interface import ITextExtractor
+from pdf_extract.interface import ITextExtractor
 
 
 class PDFPlumberExtractor(ITextExtractor):

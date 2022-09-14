@@ -9,7 +9,7 @@ import pdf2image
 import pdfbox
 from loguru import logger
 
-from .interface import ITextExtractor
+from pdf_extract.interface import ITextExtractor
 
 
 @dataclass

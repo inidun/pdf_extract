@@ -5,13 +5,13 @@ from typing import List, Optional, Union
 import argh
 from argh import arg
 
-from .interface import ITextExtractor
-from .java_extractor import JavaExtractor
-from .pdfbox_extractor import PDFBoxExtractor
-from .pdfminer_extractor import PDFMinerExtractor
-from .pdfplumber_extractor import PDFPlumberExtractor
-from .tesseract_extractor import TesseractExtractor
-from .utils import get_filenames
+from pdf_extract.interface import ITextExtractor
+from pdf_extract.java_extractor import JavaExtractor
+from pdf_extract.pdfbox_extractor import PDFBoxExtractor
+from pdf_extract.pdfminer_extractor import PDFMinerExtractor
+from pdf_extract.pdfplumber_extractor import PDFPlumberExtractor
+from pdf_extract.tesseract_extractor import TesseractExtractor
+from pdf_extract.utils import get_filenames
 
 
 def get_extractor(extractor: str) -> ITextExtractor:

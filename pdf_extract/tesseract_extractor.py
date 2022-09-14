@@ -7,7 +7,7 @@ import pytesseract
 from loguru import logger
 from pdf2image import convert_from_path
 
-from .interface import ITextExtractor
+from pdf_extract.interface import ITextExtractor
 
 
 # TODO: Add language as argument
