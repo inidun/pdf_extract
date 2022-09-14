@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+ <head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+  <meta name='ocr-system' content='tesseract 5.1.0-32-gf36c0' />
+  <meta name='ocr-capabilities' content='ocr_page ocr_carea ocr_par ocr_line ocrx_word ocrp_wconf'/>
+ </head>
+ <body>
+  <div class='ocr_page' id='page_1' title='image "/tmp/tess_gpg7314l.PNG"; bbox 0 0 542 819; ppageno 0; scan_res 70 70'>
+   <div class='ocr_carea' id='block_1_1' title="bbox 237 30 314 58">
+    <p class='ocr_par' id='par_1_1' lang='eng' title="bbox 237 30 314 58">
+     <span class='ocr_line' id='line_1_1' title="bbox 237 30 314 58; baseline -0.017 -6.81; x_size 28.5; x_descenders 7.125; x_ascenders 7.125">
+      <span class='ocrx_word' id='word_1_1' title='bbox 232 30 314 58; x_wconf 37'>(UNESCO,</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_2' title="bbox 104 52 437 120">
+    <p class='ocr_par' id='par_1_2' lang='eng' title="bbox 104 52 437 120">
+     <span class='ocr_line' id='line_1_2' title="bbox 104 52 437 120; baseline 0.003 -15; x_size 52.400002; x_descenders 13.1; x_ascenders 13.1">
+      <span class='ocrx_word' id='word_1_2' title='bbox 104 52 437 120; x_wconf 95'>COURIER</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_3' title="bbox 185 115 433 120"></div>
+   <div class='ocr_separator' id='block_1_4' title="bbox 28 132 510 134"></div>
+   <div class='ocr_carea' id='block_1_5' title="bbox 27 133 518 232">
+    <p class='ocr_par' id='par_1_3' lang='eng' title="bbox 27 133 518 232">
+     <span class='ocr_line' id='line_1_3' title="bbox 27 133 518 196; baseline 0.004 -13.004; x_size 34.692062; x_descenders 5.6920638; x_ascenders 7">
+      <span class='ocrx_word' id='word_1_3' title='bbox 27 134 236 196; x_wconf 91'>International</span>
+      <span class='ocrx_word' id='word_1_4' title='bbox 248 154 373 184; x_wconf 96'>Theatre</span>
+      <span class='ocrx_word' id='word_1_5' title='bbox 385 133 518 185; x_wconf 90'>Institute</span>
+     </span>
+     <span class='ocr_line' id='line_1_4' title="bbox 211 194 517 232; baseline 0.007 -8; x_size 36; x_descenders 6; x_ascenders 8">
+      <span class='ocrx_word' id='word_1_6' title='bbox 211 194 367 225; x_wconf 37'>Formed</span>
+      <span class='ocrx_word' id='word_1_7' title='bbox 360 203 388 225; x_wconf 96'>in</span>
+      <span class='ocrx_word' id='word_1_8' title='bbox 402 195 517 232; x_wconf 96'>Prague</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_6' title="bbox 328 238 518 272">
+    <p class='ocr_par' id='par_1_4' lang='eng' title="bbox 328 238 518 272">
+     <span class='ocr_line' id='line_1_5' title="bbox 351 238 495 250; baseline 0.007 -1; x_size 16; x_descenders 4; x_ascenders 4">
+      <span class='ocrx_word' id='word_1_9' title='bbox 351 238 393 250; x_wconf 94'>PARIS</span>
+      <span class='ocrx_word' id='word_1_10' title='bbox 406 238 465 250; x_wconf 94'>NAMED</span>
+      <span class='ocrx_word' id='word_1_11' title='bbox 477 238 495 250; x_wconf 91'>AS</span>
+     </span>
+     <span class='ocr_line' id='line_1_6' title="bbox 328 257 518 272; baseline 0.005 -4; x_size 20; x_descenders 5; x_ascenders 5">
+      <span class='ocrx_word' id='word_1_12' title='bbox 328 257 372 268; x_wconf 93'>FIRST</span>
+      <span class='ocrx_word' id='word_1_13' title='bbox 386 257 518 272; x_wconf 93'>HEADQUARTERS</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_7' title="bbox 170 128 344 144"></div>
+   <div class='ocr_separator' id='block_1_8' title="bbox 27 140 517 143"></div>
+   <div class='ocr_carea' id='block_1_9' title="bbox 124 468 320 496">
+    <p class='ocr_par' id='par_1_5' lang='eng' title="bbox 124 468 320 496">
+     <span class='ocr_line' id='line_1_7' title="bbox 124 468 320 496; baseline 0.005 -1; x_size 23.279999; x_descenders 5.2799997; x_ascenders 6">
+      <span class='ocrx_word' id='word_1_14' title='bbox 124 468 187 496; x_wconf 70'>Museum</span>
+      <span class='ocrx_word' id='word_1_15' title='bbox 195 478 261 496; x_wconf 95'>Directors</span>
+      <span class='ocrx_word' id='word_1_16' title='bbox 269 470 320 496; x_wconf 76'>Gather</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_10' title="bbox 139 501 319 524">
+    <p class='ocr_par' id='par_1_6' lang='eng' title="bbox 139 501 319 524">
+     <span class='ocr_caption' id='line_1_8' title="bbox 139 501 319 524; baseline 0.006 -1; x_size 28.296295; x_descenders 5.2962961; x_ascenders 10">
+      <span class='ocrx_word' id='word_1_17' title='bbox 139 506 144 523; x_wconf 75'>t</span>
+      <span class='ocrx_word' id='word_1_18' title='bbox 149 505 183 523; x_wconf 96'>First</span>
+      <span class='ocrx_word' id='word_1_19' title='bbox 188 505 231 523; x_wconf 95'>World</span>
+      <span class='ocrx_word' id='word_1_20' title='bbox 237 501 319 524; x_wconf 93'>Conference</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_carea' id='block_1_11' title="bbox 32 590 183 602">
+    <p class='ocr_par' id='par_1_7' lang='eng' title="bbox 32 590 183 602">
+     <span class='ocr_line' id='line_1_9' title="bbox 32 590 183 602; baseline 0.007 -1; x_size 20; x_descenders 5; x_ascenders 5">
+      <span class='ocrx_word' id='word_1_21' title='bbox 32 590 77 602; x_wconf 93'>CHILD</span>
+      <span class='ocrx_word' id='word_1_22' title='bbox 91 590 157 602; x_wconf 93'>EXPERTS</span>
+      <span class='ocrx_word' id='word_1_23' title='bbox 172 591 183 602; x_wconf 45'>MI</span>
+     </span>
+    </p>
+   </div>
+   <div class='ocr_photo' id='block_1_12' title="bbox 22 190 530 798"></div>
+  </div>
+ </body>
+</html>
