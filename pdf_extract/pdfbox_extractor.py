@@ -124,13 +124,13 @@ class PDFBoxExtractor(ITextExtractor):
                     with open(file, 'r', encoding='utf-8') as infile:
 
                         if page_numbers:
-                            page_number: int = int(file.stem.split('_')[1])
+                            page_number: int = int(file.stem.rsplit('_', 1)[-1])
                             outfile.write(f'\n## Page {page_number}\n\n')
 
                         contents = infile.read()
                         outfile.write(contents)
 
-        logger.success(f'Extracted: {basename}, pages: {num_pages}')
+        logger.success(f'Extracted: {basename}, pages: {first_page}-{last_page}')
 
 
 if __name__ == '__main__':
