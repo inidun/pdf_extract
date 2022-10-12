@@ -48,7 +48,7 @@ profile = "black"
 line_length = 120
 py_version = "auto"
 float_to_top = true
-src_paths = [ "pdf_extract", "tests" ]
+src_paths = [ "pdf_extract", "scripts", "tests" ]
 
 [tool.pylint.main]
 exit-zero = true

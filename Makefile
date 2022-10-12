@@ -1,5 +1,5 @@
 SHELL := /bin/bash
-SOURCE_FOLDERS=pdf_extract tests
+SOURCE_FOLDERS=pdf_extract scripts tests
 PACKAGE_FOLDER=pdf_extract
 BLACK_ARGS=--line-length 120 --target-version py310 --skip-string-normalization -q
 MYPY_ARGS=--show-column-numbers --no-error-summary --python-version 3.10
