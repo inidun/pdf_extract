@@ -29,6 +29,12 @@ def extract(
     output_folder.mkdir(parents=True, exist_ok=True)
     extractor: PDFBoxExtractor = PDFBoxExtractor()
 
+    logfile = Path(output_folder) / 'extract.log'
+    file_logger = logger.add(
+        Path(logfile),
+        format='{time:YYYY-MM-DD HH:mm:ss.SSS} | {level} | {message}',
+    )
+
     with open(metadata_file, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
         pdf_pages = {f"{x['year']}_{x['filename']}.pdf": x['vr_pr_pages'] for x in reader}
@@ -58,6 +64,8 @@ def extract(
 
     for job in jobs:
         extractor.extract_text(**job)
+
+    logger.remove(file_logger)
 
 
 if __name__ == '__main__':
