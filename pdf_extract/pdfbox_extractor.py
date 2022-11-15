@@ -8,6 +8,7 @@ from typing import List, Optional, Union
 import pdf2image
 import pdfbox
 from loguru import logger
+from tqdm import tqdm
 
 from pdf_extract.interface import ITextExtractor
 
@@ -94,8 +95,20 @@ class PDFBoxExtractor(ITextExtractor):
         if last_page is None or last_page > num_pages:
             last_page = int(num_pages)
 
+        ouput_filename: str = (
+            f'{basename}_{first_page}-{last_page}.txt' if last_page < num_pages or first_page > 1 else f'{basename}.txt'
+        )
+
+        output_filepath: Path = Path(output_folder) / ouput_filename
+
+        if output_filepath.exists():
+            logger.info(f'Skipping {basename}: Already extracted')
+            return
+
+        logger.info(f'Processing {basename}, pages: {first_page}-{last_page}')
+
         with TemporaryDirectory() as temp_dir:
-            for page in range(first_page, last_page + 1):
+            for page in tqdm(range(first_page, last_page + 1), desc='Extracting pages'):
                 output_filename = Path(temp_dir) / f'{basename}_{page:04}.txt'
                 p.extract_text(
                     filename,
@@ -109,13 +122,7 @@ class PDFBoxExtractor(ITextExtractor):
                     console=self.console,
                 )
 
-            extracted_filename: str = (
-                f'{basename}_{first_page}-{last_page}.txt'
-                if last_page < num_pages or first_page > 1
-                else f'{basename}.txt'
-            )
-
-            with open(Path(output_folder) / extracted_filename, 'w', encoding='utf-8') as outfile:
+            with open(Path(output_folder) / ouput_filename, 'w', encoding='utf-8') as outfile:
 
                 if page_numbers:
                     outfile.write(f'# {basename}\n\n')
