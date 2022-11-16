@@ -41,7 +41,7 @@ clean:
 
 test:
 	@poetry run pytest --durations=0 tests/
-test-coverage:
+coverage:
 	@poetry run pytest --durations=0 --cov=$(PACKAGE_FOLDER) --cov-report=xml --cov-report=html --cov-branch tests/
 test-no-java:
 	@poetry run pytest -m "not java" --durations=0 tests/
@@ -50,15 +50,17 @@ test-java:
 	@poetry run pytest -m "java" tests/
 retest:
 	@poetry run pytest --durations=0 --last-failed tests
-.PHONY: test test-coverage test-no-java test-java retest
+.PHONY: test coverage test-no-java test-java retest
 
 .PHONY: help
 
 help:
 	@echo "Higher level recepies: "
 	@echo " make clean            Removes temporary files, caches, and build files"
-	@echo " make lint             Runs tidy, pylint, flake8 and mypy"
-	@echo " make test             Runs tests with code coverage"
+	@echo " make lint             Runs tidy and pylint"
+	@echo " make typing           Runs tidy, pylint, and mypy"
+	@echo " make test             Runs tests"
+	@echo " make coverage         Runs tests with code coverage"
 	@echo " make tidy             Runs black and isort"
 	@echo "  "
 	@echo "Lower level recepies: "
