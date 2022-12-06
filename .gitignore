@@ -175,5 +175,5 @@ deprecated/
 
 # Other
 ~$*
-*zip:Zone.Identifier
+*Zone.Identifier
 *.out
