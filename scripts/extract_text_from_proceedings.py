@@ -37,7 +37,7 @@ def extract(
 
     with open(metadata_file, newline='', encoding='utf-8-sig') as csvfile:
         reader = csv.DictReader(csvfile, delimiter=';')
-        pdf_pages = {f"{x['year']}_{x['filename']}.pdf": x['vr_pr_pages'] for x in reader}
+        pdf_pages = {f"{x['year']}_{x['filename']}.pdf": x['pdf_page_numbers'] for x in reader}
 
     jobs = []
 
