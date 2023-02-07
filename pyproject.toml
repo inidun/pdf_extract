@@ -52,20 +52,10 @@ src_paths = [ "pdf_extract", "scripts", "tests" ]
 
 [tool.pylint.main]
 exit-zero = true
-fail-under = 10
-# ignore = ["CVS"]
 ignore-paths = "deprecated"
 ignore-patterns = ["^\\.#"]
-
-# Python code to execute, usually for sys.path manipulation such as
-# pygtk.require().
-# init-hook =
-
 jobs = 0
-limit-inference-results = 100
-persistent = true
 py-version = "3.10"
-suggestion-mode = true
 
 [tool.pylint.design]
 max-args = 8
@@ -78,27 +68,7 @@ overgeneral-exceptions = ["builtins.BaseException", "builtins.Exception"]
 expected-line-ending-format = "LF"
 max-line-length = 120
 
-[tool.pylint.imports]
-# Output a graph (.gv or any supported image format) of external dependencies to
-# the given file (report RP0402 must not be disabled).
-# ext-import-graph =
-
-# Output a graph (.gv or any supported image format) of all (i.e. internal and
-# external) dependencies to the given file (report RP0402 must not be disabled).
-# import-graph =
-
-# Output a graph (.gv or any supported image format) of internal dependencies to
-# the given file (report RP0402 must not be disabled).
-# int-import-graph =
-
-
-[tool.pylint.logging]
-logging-format-style = "old"
-
 [tool.pylint."messages control"]
-confidence = ["HIGH", "CONTROL_FLOW", "INFERENCE", "INFERENCE_FAILURE", "UNDEFINED"]
-
-# duplicate-code
 disable = [
     "duplicate-code", # FIXME: temporary
     "invalid-name",
@@ -106,7 +76,6 @@ disable = [
     "missing-class-docstring",
     "missing-function-docstring",
     "line-too-long",
-    # "no-self-use",
     "pointless-string-statement",
     "global-statement",
     "c-extension-no-member",
@@ -115,7 +84,6 @@ disable = [
     "logging-fstring-interpolation",
     "consider-using-enumerate",
     "unnecessary-comprehension",
-    # "misplaced-comparison-constant",
     "too-many-branches",
     "too-many-locals",
     "wrong-import-order",
@@ -124,18 +92,14 @@ disable = [
 ]
 
 [tool.pylint.miscellaneous]
-# notes = ["FIXME", "XXX", "TODO"]
 notes = ""
 
 [tool.pylint.refactoring]
 never-returning-functions = ["sys.exit", "argparse.parse_error"]
 
 [tool.pylint.reports]
-evaluation = "max(0, 0 if fatal else 10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10))"
 output-format = "colorized"
-# reports = true
 score = false
-
 
 [tool.pytest.ini_options]
 log_cli = "False"
