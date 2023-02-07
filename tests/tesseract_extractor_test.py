@@ -12,7 +12,6 @@ test_dir = Path('tests/fixtures/')
 
 def test_extract_extracts_right_amount_of_files():
     with TemporaryDirectory() as output_dir:
-
         files: List[Path] = get_filenames(test_dir / 'test.pdf')
         extractor: ITextExtractor = TesseractExtractor(dpi=1, fmt='png')
         extractor.batch_extract(files, output_dir)
@@ -22,7 +21,6 @@ def test_extract_extracts_right_amount_of_files():
 
 
 def test_pdf_to_alto_generates_expected_output():
-
     file = test_dir / 'test.pdf'
     expected = test_dir / 'expected/alto/test_0001.alto'
     extractor: TesseractExtractor = TesseractExtractor()
@@ -37,7 +35,6 @@ def test_pdf_to_alto_generates_expected_output():
 
 
 def test_pdf_to_hocr_generates_expected_output():
-
     file = test_dir / 'test.pdf'
     expected = test_dir / 'expected/hocr/test_0001.hocr'
     extractor: TesseractExtractor = TesseractExtractor(dpi=50, fmt='png')

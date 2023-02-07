@@ -13,7 +13,6 @@ from pdf_extract.interface import ITextExtractor
 # TODO: Add language as argument
 @dataclass
 class TesseractExtractor(ITextExtractor):
-
     dpi: int = 350
     fmt: str = 'tiff'
     grayscale: bool = True

@@ -15,7 +15,6 @@ from pdf_extract.interface import ITextExtractor
 
 @dataclass
 class PDFBoxExtractor(ITextExtractor):
-
     p: pdfbox.PDFBox = pdfbox.PDFBox()
     encoding: str = 'utf-8'
     html: bool = False
@@ -62,7 +61,6 @@ class PDFBoxExtractor(ITextExtractor):
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
-
         logfile = Path(output_folder) / 'extract.log'
         if logfile.exists():
             files = self._skip_completed(files, logfile)
@@ -87,7 +85,6 @@ class PDFBoxExtractor(ITextExtractor):
         # page_sep: str = '',
         page_numbers: bool = False,
     ) -> None:
-
         p = pdfbox.PDFBox()
         basename = Path(filename).stem
 
@@ -123,13 +120,11 @@ class PDFBoxExtractor(ITextExtractor):
                 )
 
             with open(Path(output_folder) / ouput_filename, 'w', encoding='utf-8') as outfile:
-
                 if page_numbers:
                     outfile.write(f'# {basename}\n\n')
 
                 for file in sorted(Path(temp_dir).glob('*.txt')):
                     with open(file, 'r', encoding='utf-8') as infile:
-
                         if page_numbers:
                             page_number: int = int(file.stem.rsplit('_', 1)[-1])
                             outfile.write(f'\n## Page {page_number}\n\n')

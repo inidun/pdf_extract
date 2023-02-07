@@ -66,7 +66,6 @@ class ExtractedPages:
 # TODO: Add java args as option to JavaExtractor class
 class JavaExtractor(ITextExtractor):
     def __init__(self, title_font_size: float = 5.5, min_title_length: int = 8, pdfextract_jar_path: str = JARFILE):
-
         self.title_font_size = title_font_size
         self.min_title_length = min_title_length
 

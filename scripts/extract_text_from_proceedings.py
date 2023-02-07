@@ -21,7 +21,6 @@ class Job(TypedDict):
 def extract(
     input_folder: str | os.PathLike, output_folder: str | os.PathLike, metadata_file: str | os.PathLike
 ) -> None:
-
     input_folder: Path = Path(input_folder)
     output_folder: Path = Path(output_folder)
 

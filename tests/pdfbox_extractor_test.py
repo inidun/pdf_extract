@@ -15,7 +15,6 @@ test_dir = Path('tests/fixtures/')
 
 @pytest.mark.java
 def test_python_pdfbox_extract_text_generates_correct_output():
-
     file = test_dir / 'test.pdf'
     expected_output = test_dir / 'test.txt'
     p = pdfbox.PDFBox()
@@ -31,12 +30,10 @@ def test_python_pdfbox_extract_text_generates_correct_output():
 
 @pytest.mark.java
 def test_batch_extract_generates_expected_output():
-
     files: List[Path] = get_filenames(test_dir / 'test.pdf')
     extractor: ITextExtractor = PDFBoxExtractor()
 
     with TemporaryDirectory() as output_dir:
-
         extractor.batch_extract(files, output_dir)
 
         assert len(sorted(Path(output_dir).glob('*.txt'))) == 8
@@ -47,7 +44,6 @@ def test_batch_extract_generates_expected_output():
 
 @pytest.mark.java
 def test_extract_text_generates_expected_output():
-
     file = test_dir / 'test.pdf'
     expected = test_dir / 'test.txt'
     extractor: PDFBoxExtractor = PDFBoxExtractor()
@@ -61,7 +57,6 @@ def test_extract_text_generates_expected_output():
 
 @pytest.mark.java
 def test_extract_text_with_page_numbers_generates_expected_output():
-
     file = test_dir / 'test.pdf'
     expected = test_dir / 'expected/pdfbox_page_numbers/test.txt'
     extractor: PDFBoxExtractor = PDFBoxExtractor()
@@ -87,7 +82,6 @@ def test_extract_text_with_page_numbers_generates_expected_output():
 def test_extract_text_adds_page_numbers_to_filename_if_not_all_pages_are_extracted(
     input_pdf, first_page, last_page, expected
 ):
-
     file = test_dir / input_pdf
 
     extractor: PDFBoxExtractor = PDFBoxExtractor()
