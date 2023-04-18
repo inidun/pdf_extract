@@ -10,4 +10,4 @@ def test_version():
 def test_pytesseract():
     assert set(pytesseract.get_languages()) >= {'eng', 'osd'}
     assert pytesseract.get_tesseract_version().release >= (5, 3, 0)
-    assert pytesseract.get_tesseract_version().public == '5.3.0'
+    assert pytesseract.get_tesseract_version().public == '5.3.1'
