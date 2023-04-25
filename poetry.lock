@@ -32,14 +32,14 @@ test = ["iocapture (>=0.1.2)", "pytest (>=7.2)", "pytest-cov (>=4.0)", "tox (>=4
 
 [[package]]
 name = "astroid"
-version = "2.15.3"
+version = "2.15.4"
 description = "An abstract syntax tree for Python with inference support."
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 files = [
-    {file = "astroid-2.15.3-py3-none-any.whl", hash = "sha256:f11e74658da0f2a14a8d19776a8647900870a63de71db83713a8e77a6af52662"},
-    {file = "astroid-2.15.3.tar.gz", hash = "sha256:44224ad27c54d770233751315fa7f74c46fa3ee0fab7beef1065f99f09897efe"},
+    {file = "astroid-2.15.4-py3-none-any.whl", hash = "sha256:a1b8543ef9d36ea777194bc9b17f5f8678d2c56ee6a45b2c2f17eec96f242347"},
+    {file = "astroid-2.15.4.tar.gz", hash = "sha256:c81e1c7fbac615037744d067a9bb5f9aeb655edf59b63ee8b59585475d6f80d8"},
 ]
 
 [package.dependencies]
@@ -833,18 +833,18 @@ files = [
 
 [[package]]
 name = "pylint"
-version = "2.17.2"
+version = "2.17.3"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 files = [
-    {file = "pylint-2.17.2-py3-none-any.whl", hash = "sha256:001cc91366a7df2970941d7e6bbefcbf98694e00102c1f121c531a814ddc2ea8"},
-    {file = "pylint-2.17.2.tar.gz", hash = "sha256:1b647da5249e7c279118f657ca28b6aaebb299f86bf92affc632acf199f7adbb"},
+    {file = "pylint-2.17.3-py3-none-any.whl", hash = "sha256:a6cbb4c6e96eab4a3c7de7c6383c512478f58f88d95764507d84c899d656a89a"},
+    {file = "pylint-2.17.3.tar.gz", hash = "sha256:761907349e699f8afdcd56c4fe02f3021ab5b3a0fc26d19a9bfdc66c7d0d5cd5"},
 ]
 
 [package.dependencies]
-astroid = ">=2.15.2,<=2.17.0-dev0"
+astroid = ">=2.15.4,<=2.17.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = [
     {version = ">=0.2", markers = "python_version < \"3.11\""},
@@ -937,14 +937,14 @@ setuptools = "*"
 
 [[package]]
 name = "setuptools"
-version = "67.6.1"
+version = "67.7.2"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "setuptools-67.6.1-py3-none-any.whl", hash = "sha256:e728ca814a823bf7bf60162daf9db95b93d532948c4c0bea762ce62f60189078"},
-    {file = "setuptools-67.6.1.tar.gz", hash = "sha256:257de92a9d50a60b8e22abfcbb771571fde0dbf3ec234463212027a4eeecbe9a"},
+    {file = "setuptools-67.7.2-py3-none-any.whl", hash = "sha256:23aaf86b85ca52ceb801d32703f12d77517b2556af839621c641fca11287952b"},
+    {file = "setuptools-67.7.2.tar.gz", hash = "sha256:f104fa03692a2602fa0fec6c6a9e63b6c8a968de13e17c026957dd1f53d80990"},
 ]
 
 [package.extras]
@@ -999,14 +999,14 @@ telegram = ["requests"]
 
 [[package]]
 name = "types-setuptools"
-version = "67.6.0.8"
+version = "67.7.0.0"
 description = "Typing stubs for setuptools"
 category = "dev"
 optional = false
 python-versions = "*"
 files = [
-    {file = "types-setuptools-67.6.0.8.tar.gz", hash = "sha256:df3e084c3b5af782cb81bd516f40213b572d932fa2f1272aef307d15643736f8"},
-    {file = "types_setuptools-67.6.0.8-py3-none-any.whl", hash = "sha256:0b178cab1d5a7487cd410d1b5448d1a85d9da1bf44aa7be7c0d4f33d65041e5a"},
+    {file = "types-setuptools-67.7.0.0.tar.gz", hash = "sha256:f59b03c786510176c7601578d84d5e6c58e985de331f08036b2fe008408a63c1"},
+    {file = "types_setuptools-67.7.0.0-py3-none-any.whl", hash = "sha256:02ee794d41c282ecfc99e09d8115ca4c3c4395a9747d1a35fa4a6f243d7585e6"},
 ]
 
 [[package]]
