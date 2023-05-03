@@ -80,13 +80,14 @@ class PDFBoxExtractor(ITextExtractor):
         self,
         filename: str | os.PathLike,
         output_folder: str | os.PathLike,
-        first_page: int = 1,
+        first_page: int | None = 1,
         last_page: int | None = None,
         # page_sep: str = '',
         page_numbers: bool = False,
     ) -> None:
-        p = pdfbox.PDFBox()
+        first_page: int = first_page or 1
         basename = Path(filename).stem
+        p = pdfbox.PDFBox()
 
         num_pages = pdf2image.pdfinfo_from_path(str(filename))['Pages']
         if last_page is None or last_page > num_pages:
