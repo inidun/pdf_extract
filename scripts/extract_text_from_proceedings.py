@@ -26,6 +26,8 @@ def extract(
 
     pdf_filenames: list[Path] = get_filenames(input_folder)
     output_folder.mkdir(parents=True, exist_ok=True)
+
+    # TODO: Add extractor as argument
     extractor: PDFBoxExtractor = PDFBoxExtractor()
 
     logfile = Path(output_folder) / 'extract.log'
