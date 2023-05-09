@@ -59,3 +59,16 @@ def test_pdf_to_txt_returns_correct_number_of_pages(input_pdf, first_page, last_
         result = len(list(Path(output_dir).iterdir()))
         assert result == expected
         assert not (Path(output_dir) / 'extract.log').exists()
+
+
+def test_extract_text_generates_expected_output():
+    file = test_dir / 'test.pdf'
+    expected = test_dir / 'expected/pdfplumber/extract_text/test.txt'
+    extractor: PDFPlumberExtractor = PDFPlumberExtractor()
+
+    with TemporaryDirectory() as output_dir:
+        extractor.extract_text(file, output_dir, page_numbers=True)
+
+        result = Path(output_dir) / 'test.txt'
+        assert result.exists()
+        assert filecmp.cmp(result, expected) is True
