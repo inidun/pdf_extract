@@ -4,9 +4,11 @@ from pathlib import Path
 from typing import TypedDict
 
 import argh
+from argh import arg
 from loguru import logger
 
-from pdf_extract.pdfbox_extractor import PDFBoxExtractor
+from pdf_extract.cli import get_extractor
+from pdf_extract.interface import ITextExtractor
 from pdf_extract.utils import get_filenames
 
 
@@ -18,17 +20,33 @@ class Job(TypedDict):
     page_numbers: bool
 
 
+@arg(
+    '--extractor',
+    choices=[
+        # 'JavaExtractor',
+        'PDFBox',
+        # 'PDFBoxHTML',
+        # 'PDFMiner',
+        'PDFPlumber',
+        'Tesseract',
+    ],
+)  # type: ignore
 def extract(
-    input_folder: str | os.PathLike, output_folder: str | os.PathLike, metadata_file: str | os.PathLike
+    input_folder: str | os.PathLike,
+    output_folder: str | os.PathLike,
+    metadata_file: str | os.PathLike,
+    page_numbers: bool = False,
+    extractor: str = 'PDFBox',
 ) -> None:
     input_folder: Path = Path(input_folder)
     output_folder: Path = Path(output_folder)
 
     pdf_filenames: list[Path] = get_filenames(input_folder)
     output_folder.mkdir(parents=True, exist_ok=True)
+    extractor: ITextExtractor = get_extractor(extractor)
 
-    # TODO: Add extractor as argument
-    extractor: PDFBoxExtractor = PDFBoxExtractor()
+    if not hasattr(extractor, 'extract_text') and callable(extractor.batch_extract):
+        raise NotImplementedError
 
     logfile = Path(output_folder) / 'extract.log'
     file_logger = logger.add(
@@ -57,7 +75,7 @@ def extract(
                     output_folder=output_folder,
                     first_page=first_page,
                     last_page=last_page,
-                    page_numbers=True,
+                    page_numbers=page_numbers,
                 )
             )
 
