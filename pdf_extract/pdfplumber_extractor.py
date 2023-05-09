@@ -71,13 +71,13 @@ class PDFPlumberExtractor(ITextExtractor):
             pages = range(first_page - 1, last_page)
             for i in pages:
                 if page_numbers:
-                    text.append(f'## Page {i}\n')
+                    text.append(f'## Page {i+1}\n')
                 page = pdf.pages[i]
                 if page is not None:
                     text.append(page.extract_text(**extract_text_config, **extract_words_config) or '')
 
         with open(output_filepath, 'w', encoding='utf-8') as fp:
-            fp.write('\n'.join(text))
+            fp.write('\n\n'.join(text))
 
         logger.success(f'Extracted: {basename}, pages: {first_page}-{last_page}')
 
