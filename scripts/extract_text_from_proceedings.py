@@ -21,6 +21,7 @@ class Job(TypedDict):
 
 
 @arg(
+    '-e',
     '--extractor',
     choices=[
         # 'JavaExtractor',
@@ -30,6 +31,7 @@ class Job(TypedDict):
         'PDFPlumber',
         'Tesseract',
     ],
+    default='PDFBox',
 )  # type: ignore
 def extract(
     input_folder: str | os.PathLike,
