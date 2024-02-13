@@ -1,25 +1,19 @@
-# type: ignore
-# noqa: F401,F811
-# pyright: reportMissingImports=false, reportUnusedVariable=warning
-# pylint: disable=unused-variable,unused-import,redefined-outer-name
-
-import logging
+# pylint: disable=redefined-outer-name
+# mypy: disable-error-code="no-untyped-def"
 
 import pytest
-from _pytest.logging import caplog as _caplog
+from _pytest.logging import LogCaptureFixture
 from loguru import logger
 
 
 @pytest.fixture
-def caplog(_caplog):
-    """Captures `loguru` output so that it can be tested against
-    See: https://loguru.readthedocs.io/en/stable/resources/migration.html#making-things-work-with-pytest-and-caplog
-    """
-
-    class PropogateHandler(logging.Handler):
-        def emit(self, record):
-            logging.getLogger(record.name).handle(record)
-
-    handler_id = logger.add(PropogateHandler(), format='{message} {extra}')
-    yield _caplog
+def caplog(caplog: LogCaptureFixture):
+    handler_id = logger.add(
+        caplog.handler,
+        format="{message}",
+        level=0,
+        filter=lambda record: record["level"].no >= caplog.handler.level,
+        enqueue=False,  # Set to 'True' if your test is spawning child processes.
+    )
+    yield caplog
     logger.remove(handler_id)
