@@ -985,13 +985,13 @@ telegram = ["requests"]
 
 [[package]]
 name = "types-setuptools"
-version = "69.5.0.20240522"
+version = "71.1.0.20240806"
 description = "Typing stubs for setuptools"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "types-setuptools-69.5.0.20240522.tar.gz", hash = "sha256:c5a97601b2d040d3b9fcd0633730f0a8c86ebef208552525c97301427f261549"},
-    {file = "types_setuptools-69.5.0.20240522-py3-none-any.whl", hash = "sha256:e27231cbc80648cfaee4921d2f1150107fdf8d33666958abf2aba0191a82688b"},
+    {file = "types-setuptools-71.1.0.20240806.tar.gz", hash = "sha256:ae5e7b4d643ab9e99fc00ac00041804118cabe72a56183c30d524fb064897ad6"},
+    {file = "types_setuptools-71.1.0.20240806-py3-none-any.whl", hash = "sha256:3bd8dd02039be0bb79ad880d8893b8eefcb022fabbeeb61245c61b20c9ab1ed0"},
 ]
 
 [[package]]
@@ -1022,4 +1022,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ddfb02472a2f3c248f6199790b1aed66dfaa2a26cf86b54e2abc511aa4054aee"
+content-hash = "73ada318c63269bb8d72c662cc86a25547b9a02a7d1c44ffa9f50c7653f2695e"
