@@ -32,7 +32,7 @@ class Job(TypedDict):
         'Tesseract',
     ],
     default='PDFBox',
-)  # type: ignore
+)
 def extract(
     input_folder: str | os.PathLike[str],
     output_folder: str | os.PathLike[str],

@@ -30,7 +30,7 @@ def get_extractor(extractor: str) -> ITextExtractor:
     raise ValueError(extractor)
 
 
-@arg('--extractor', choices=['JavaExtractor', 'PDFBox', 'PDFBoxHTML', 'PDFMiner', 'PDFPlumber', 'Tesseract'])  # type: ignore
+@arg('--extractor', choices=['JavaExtractor', 'PDFBox', 'PDFBoxHTML', 'PDFMiner', 'PDFPlumber', 'Tesseract'])
 def extract(
     input_path: Union[str, os.PathLike[str]],
     output_folder: Union[str, os.PathLike[str]],

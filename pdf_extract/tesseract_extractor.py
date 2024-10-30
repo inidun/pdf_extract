@@ -151,7 +151,7 @@ class TesseractExtractor(ITextExtractor):
         images = convert_from_path(
             str(filename),
             first_page=first_page,
-            last_page=last_page,  # type: ignore
+            last_page=last_page,
             dpi=self.dpi,
             fmt=self.fmt,
             grayscale=self.grayscale,
