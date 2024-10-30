@@ -20,8 +20,7 @@ class TesseractExtractor(ITextExtractor):
     grayscale: bool = True
     use_pdftocairo: bool = True
 
-    # TODO: Add to config
-    tessdata: str = str(Path.home() / 'data/tessdata_best')
+    tessdata: str = os.environ['TESSDATA_PREFIX']  # FIXME: Use config file instead
     tesseract_config: str = f'--oem 1 --psm 1 --tessdata-dir {tessdata}'
 
     def pdf_to_txt(
