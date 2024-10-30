@@ -13,8 +13,8 @@ from pdf_extract.utils import get_filenames
 
 
 class Job(TypedDict):
-    filename: str | os.PathLike
-    output_folder: str | os.PathLike
+    filename: str | os.PathLike[str]
+    output_folder: str | os.PathLike[str]
     first_page: int
     last_page: int | None
     page_numbers: bool
@@ -34,9 +34,9 @@ class Job(TypedDict):
     default='PDFBox',
 )  # type: ignore
 def extract(
-    input_folder: str | os.PathLike,
-    output_folder: str | os.PathLike,
-    metadata_file: str | os.PathLike,
+    input_folder: str | os.PathLike[str],
+    output_folder: str | os.PathLike[str],
+    metadata_file: str | os.PathLike[str],
     page_numbers: bool = False,
     extractor: str = 'PDFBox',
 ) -> None:

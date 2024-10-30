@@ -32,8 +32,8 @@ def get_extractor(extractor: str) -> ITextExtractor:
 
 @arg('--extractor', choices=['JavaExtractor', 'PDFBox', 'PDFBoxHTML', 'PDFMiner', 'PDFPlumber', 'Tesseract'])  # type: ignore
 def extract(
-    input_path: Union[str, os.PathLike],
-    output_folder: Union[str, os.PathLike],
+    input_path: Union[str, os.PathLike[str]],
+    output_folder: Union[str, os.PathLike[str]],
     first_page: int = 1,
     last_page: Optional[int] = None,
     extractor: str = 'PDFBox',

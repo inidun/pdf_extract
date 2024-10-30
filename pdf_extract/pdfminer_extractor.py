@@ -18,8 +18,8 @@ from pdf_extract.interface import ITextExtractor
 class PDFMinerExtractor(ITextExtractor):
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike],
-        output_folder: Union[str, os.PathLike],
+        filename: Union[str, os.PathLike[str]],
+        output_folder: Union[str, os.PathLike[str]],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:

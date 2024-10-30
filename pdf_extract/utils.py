@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import List, Union
 
 
-def get_filenames(files: Union[str, os.PathLike], extension: str = 'pdf') -> List[Path]:
+def get_filenames(files: Union[str, os.PathLike[str]], extension: str = 'pdf') -> List[Path]:
     items = []
     path = Path(files)
     if path.is_dir():

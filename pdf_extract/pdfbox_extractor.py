@@ -24,8 +24,8 @@ class PDFBoxExtractor(ITextExtractor):
 
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike],
-        output_folder: Union[str, os.PathLike],
+        filename: Union[str, os.PathLike[str]],
+        output_folder: Union[str, os.PathLike[str]],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
@@ -56,7 +56,7 @@ class PDFBoxExtractor(ITextExtractor):
     def batch_extract(
         self,
         files: List[Path],
-        output_folder: Union[str, os.PathLike],
+        output_folder: Union[str, os.PathLike[str]],
         *,
         first_page: int = 1,
         last_page: Optional[int] = None,
@@ -78,8 +78,8 @@ class PDFBoxExtractor(ITextExtractor):
     # TODO: Optimize
     def extract_text(
         self,
-        filename: str | os.PathLike,
-        output_folder: str | os.PathLike,
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int | None = 1,
         last_page: int | None = None,
         # page_sep: str = '',

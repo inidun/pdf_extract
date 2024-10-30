@@ -26,8 +26,8 @@ class TesseractExtractor(ITextExtractor):
 
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike],
-        output_folder: Union[str, os.PathLike],
+        filename: Union[str, os.PathLike[str]],
+        output_folder: Union[str, os.PathLike[str]],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
@@ -52,16 +52,16 @@ class TesseractExtractor(ITextExtractor):
 
     def pdf_to_alto(
         self,
-        filename: Union[str, os.PathLike],
-        output_folder: Union[str, os.PathLike],
+        filename: Union[str, os.PathLike[str]],
+        output_folder: Union[str, os.PathLike[str]],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
         """Extracts text from PDF-file and saves result as ALTO-XML
 
         Args:
-            filename (Union[str, os.PathLike]): Input filename (PDF-file)
-            output_folder (Union[str, os.PathLike]): Output folder
+            filename (Union[str, os.PathLike[str]]): Input filename (PDF-file)
+            output_folder (Union[str, os.PathLike[str]]): Output folder
             first_page (int, optional): First page. Defaults to 1.
             last_page (Optional[int], optional): Last page. Defaults to None.
         """
@@ -86,16 +86,16 @@ class TesseractExtractor(ITextExtractor):
 
     def pdf_to_hocr(
         self,
-        filename: Union[str, os.PathLike],
-        output_folder: Union[str, os.PathLike],
+        filename: Union[str, os.PathLike[str]],
+        output_folder: Union[str, os.PathLike[str]],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
         """Extracts text from PDF-file and saves result as hOCR
 
         Args:
-            filename (Union[str, os.PathLike]): Input filename (PDF-file)
-            output_folder (Union[str, os.PathLike]): Output folder
+            filename (Union[str, os.PathLike[str]]): Input filename (PDF-file)
+            output_folder (Union[str, os.PathLike[str]]): Output folder
             first_page (int, optional): First page. Defaults to 1.
             last_page (Optional[int], optional): Last page. Defaults to None.
         """
@@ -123,8 +123,8 @@ class TesseractExtractor(ITextExtractor):
 
     def extract_text(
         self,
-        filename: str | os.PathLike,
-        output_folder: str | os.PathLike,
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int | None = 1,
         last_page: int | None = None,
         page_numbers: bool = False,

@@ -12,16 +12,16 @@ class ITextExtractor(abc.ABC):
     @abc.abstractmethod
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike],
-        output_folder: Union[str, os.PathLike],
+        filename: Union[str, os.PathLike[str]],
+        output_folder: Union[str, os.PathLike[str]],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
         """Extracts text from PDF-file and saves result as text files (one file per page).
 
         Args:
-            filename (Union[str, os.PathLike]): Input filename (PDF-file)
-            output_folder (Union[str, os.PathLike]): Output folder
+            filename (Union[str, os.PathLike[str]]): Input filename (PDF-file)
+            output_folder (Union[str, os.PathLike[str]]): Output folder
             first_page (int, optional): First page to extract. Defaults to 1.
             last_page (int, optional): Last page to extract. Defaults to None.
         """
@@ -29,7 +29,7 @@ class ITextExtractor(abc.ABC):
     def batch_extract(
         self,
         files: List[Path],
-        output_folder: Union[str, os.PathLike],
+        output_folder: Union[str, os.PathLike[str]],
         *,
         first_page: int = 1,
         last_page: Optional[int] = None,
@@ -38,7 +38,7 @@ class ITextExtractor(abc.ABC):
 
         Args:
             files (List[Path]): List of PDF-files to process
-            output_folder (Union[str, os.PathLike]): Output folder
+            output_folder (Union[str, os.PathLike[str]]): Output folder
             first_page (int, optional): First page to extract. Defaults to 1.
             last_page (Optional[int], optional): Last page to extract. Defaults to None.
         """
@@ -57,7 +57,7 @@ class ITextExtractor(abc.ABC):
 
         self._remove_logger(file_logger)
 
-    def _add_logger(self, logfile: Union[str, os.PathLike]) -> int:
+    def _add_logger(self, logfile: Union[str, os.PathLike[str]]) -> int:
         logger.configure(handlers=[{'sink': sys.stderr, 'level': 'WARNING'}])
         file_logger = logger.add(
             Path(logfile),
@@ -69,7 +69,7 @@ class ITextExtractor(abc.ABC):
         logger.remove(file_logger)
         logger.configure(handlers=[{'sink': sys.stderr, 'level': 'INFO'}])
 
-    def _skip_completed(self, files: List[Path], logfile: Union[str, os.PathLike]) -> List[Path]:
+    def _skip_completed(self, files: List[Path], logfile: Union[str, os.PathLike[str]]) -> List[Path]:
         expr = r'(?P<time>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) \| (?P<lvl>[A-Z]+) \| (?P<msg>\w+: (?P<id>\w+).*)'
         completed = {line['id'] for line in logger.parse(logfile, expr) if line['lvl'] == 'SUCCESS'}
         logger.info(f'Skipping {len(completed)} files: {completed}')
