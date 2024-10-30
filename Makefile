@@ -28,9 +28,12 @@ notes:
 mypy:
 	@poetry run mypy $(MYPY_ARGS) $(SOURCE_FOLDERS) || true
 
+mypy-strict:
+	@poetry run mypy $(MYPY_ARGS) --strict $(SOURCE_FOLDERS) || true
+
 lint: tidy pylint
 typing: lint mypy
-.PHONY: pylint pylint_diff notes mypy lint typing
+.PHONY: pylint pylint_diff notes mypy mypy-strict lint typing
 
 clean:
 	@rm -rf .coverage coverage.xml htmlcov .nox
@@ -67,6 +70,7 @@ help:
 	@echo " make black            Runs black"
 	@echo " make isort            Runs isort"
 	@echo " make mypy             Runs mypy"
+	@echo " make mypy-strict      Runs mypy with strict mode"
 	@echo " make notes            Runs pylint with notes"
 	@echo " make pylint           Runs pylint"
 	@echo " make pylint_diff      Runs pylint on changed files only"
