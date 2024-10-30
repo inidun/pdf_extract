@@ -33,7 +33,8 @@ mypy-strict:
 
 lint: tidy pylint
 typing: lint mypy
-.PHONY: pylint pylint_diff notes mypy mypy-strict lint typing
+typing-strict: lint mypy-strict
+.PHONY: pylint pylint_diff notes mypy mypy-strict lint typing typing-strict
 
 clean:
 	@rm -rf .coverage coverage.xml htmlcov .nox
@@ -62,6 +63,7 @@ help:
 	@echo " make clean            Removes temporary files, caches, and build files"
 	@echo " make lint             Runs tidy and pylint"
 	@echo " make typing           Runs tidy, pylint, and mypy"
+	@echo " make typing-strict    Runs tidy, pylint, and mypy with strict mode"
 	@echo " make test             Runs tests"
 	@echo " make coverage         Runs tests with code coverage"
 	@echo " make tidy             Runs black and isort"
