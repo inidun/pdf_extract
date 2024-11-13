@@ -5,7 +5,6 @@
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Tuple
 
 import jpype
 import jpype.imports
@@ -37,7 +36,7 @@ def get_pdfbox_path() -> Path:
 class ExtractedPage:
     pdf_page_number: int
     content: str
-    titles: List[Tuple[str, int]]
+    titles: list[tuple[str, int]]
 
 
 @dataclass
@@ -48,7 +47,7 @@ class ExtractedPages:
       - Page numbers are not corrected for double-pages (represented as a single image in PDF).
     """
 
-    pages: List[ExtractedPage]
+    pages: list[ExtractedPage]
 
     def __len__(self) -> int:
         return len(self.pages) or 0
@@ -107,7 +106,7 @@ class JavaExtractor(ITextExtractor):
         filename: str | os.PathLike[str],
         output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         basename = Path(filename).stem
         issue: ExtractedPages = self.extract_pages(filename)

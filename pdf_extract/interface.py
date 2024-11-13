@@ -2,7 +2,6 @@ import abc
 import os
 import sys
 from pathlib import Path
-from typing import List, Optional
 
 from loguru import logger
 from tqdm import tqdm
@@ -15,7 +14,7 @@ class ITextExtractor(abc.ABC):
         filename: str | os.PathLike[str],
         output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         """Extracts text from PDF-file and saves result as text files (one file per page).
 
@@ -28,19 +27,19 @@ class ITextExtractor(abc.ABC):
 
     def batch_extract(
         self,
-        files: List[Path],
+        files: list[Path],
         output_folder: str | os.PathLike[str],
         *,
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         """Extracts text from multiple PDF-files and saves result as text files (one file per page).
 
         Args:
-            files (List[Path]): List of PDF-files to process
+            files (list[Path]): List of PDF-files to process
             output_folder (str | os.PathLike[str]): Output folder
             first_page (int, optional): First page to extract. Defaults to 1.
-            last_page (Optional[int], optional): Last page to extract. Defaults to None.
+            last_page (int , optional): Last page to extract. Defaults to None.
         """
         logfile = Path(output_folder) / 'extract.log'
         if logfile.exists():
@@ -69,7 +68,7 @@ class ITextExtractor(abc.ABC):
         logger.remove(file_logger)
         logger.configure(handlers=[{'sink': sys.stderr, 'level': 'INFO'}])
 
-    def _skip_completed(self, files: List[Path], logfile: str | os.PathLike[str]) -> List[Path]:
+    def _skip_completed(self, files: list[Path], logfile: str | os.PathLike[str]) -> list[Path]:
         expr = r'(?P<time>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) \| (?P<lvl>[A-Z]+) \| (?P<msg>\w+: (?P<id>\w+).*)'
         completed = {line['id'] for line in logger.parse(logfile, expr) if line['lvl'] == 'SUCCESS'}
         logger.info(f'Skipping {len(completed)} files: {completed}')

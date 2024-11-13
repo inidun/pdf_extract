@@ -1,7 +1,6 @@
 import os
 from io import StringIO
 from pathlib import Path
-from typing import Optional, Union
 
 import pdf2image
 from loguru import logger
@@ -18,10 +17,10 @@ from pdf_extract.interface import ITextExtractor
 class PDFMinerExtractor(ITextExtractor):
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         basename = Path(filename).stem
         num_pages: int = pdf2image.pdfinfo_from_path(str(filename))['Pages']

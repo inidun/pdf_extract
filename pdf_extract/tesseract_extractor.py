@@ -2,7 +2,6 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import Optional, Union
 
 import pdf2image
 import pytesseract
@@ -25,10 +24,10 @@ class TesseractExtractor(ITextExtractor):
 
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         basename = Path(filename).stem
         images = convert_from_path(
@@ -51,18 +50,18 @@ class TesseractExtractor(ITextExtractor):
 
     def pdf_to_alto(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         """Extracts text from PDF-file and saves result as ALTO-XML
 
         Args:
-            filename (Union[str, os.PathLike[str]]): Input filename (PDF-file)
-            output_folder (Union[str, os.PathLike[str]]): Output folder
+            filename (str | os.PathLike[str]): Input filename (PDF-file)
+            output_folder (str | os.PathLike[str]): Output folder
             first_page (int, optional): First page. Defaults to 1.
-            last_page (Optional[int], optional): Last page. Defaults to None.
+            last_page (int, optional): Last page. Defaults to None.
         """
         basename = Path(filename).stem
         images = convert_from_path(
@@ -85,18 +84,18 @@ class TesseractExtractor(ITextExtractor):
 
     def pdf_to_hocr(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         """Extracts text from PDF-file and saves result as hOCR
 
         Args:
-            filename (Union[str, os.PathLike[str]]): Input filename (PDF-file)
-            output_folder (Union[str, os.PathLike[str]]): Output folder
+            filename (str | os.PathLike[str]): Input filename (PDF-file)
+            output_folder (str | os.PathLike[str]): Output folder
             first_page (int, optional): First page. Defaults to 1.
-            last_page (Optional[int], optional): Last page. Defaults to None.
+            last_page (int, optional): Last page. Defaults to None.
         """
         basename = Path(filename).stem
         images = convert_from_path(

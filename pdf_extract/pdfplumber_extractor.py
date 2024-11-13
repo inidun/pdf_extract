@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 import pdfplumber
 from loguru import logger
@@ -14,7 +14,7 @@ class PDFPlumberExtractor(ITextExtractor):
         filename: str | os.PathLike[str],
         output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         basename = Path(filename).stem
         with pdfplumber.open(filename) as pdf:  # type: ignore[arg-type]

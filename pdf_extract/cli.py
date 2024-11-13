@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from typing import List, Optional
 
 import argh
 from argh import arg
@@ -35,11 +34,11 @@ def extract(
     input_path: str | os.PathLike[str],
     output_folder: str | os.PathLike[str],
     first_page: int = 1,
-    last_page: Optional[int] = None,
+    last_page: int | None = None,
     extractor: str = 'PDFBox',
 ) -> None:
     Path(output_folder).mkdir(exist_ok=True, parents=True)
-    files: List[Path] = get_filenames(input_path)
+    files: list[Path] = get_filenames(input_path)
 
     if last_page is not None:
         last_page = int(last_page)

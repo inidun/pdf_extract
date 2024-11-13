@@ -2,7 +2,6 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import List, Optional
 
 # TODO: No pdf2image, get page numbers from Java
 import pdf2image
@@ -27,7 +26,7 @@ class PDFBoxExtractor(ITextExtractor):
         filename: str | os.PathLike[str],
         output_folder: str | os.PathLike[str],
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         basename = Path(filename).stem
         # TODO Remove num_pages
@@ -54,11 +53,11 @@ class PDFBoxExtractor(ITextExtractor):
 
     def batch_extract(
         self,
-        files: List[Path],
+        files: list[Path],
         output_folder: str | os.PathLike[str],
         *,
         first_page: int = 1,
-        last_page: Optional[int] = None,
+        last_page: int | None = None,
     ) -> None:
         logfile = Path(output_folder) / 'extract.log'
         if logfile.exists():
