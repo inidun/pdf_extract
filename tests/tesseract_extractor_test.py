@@ -51,6 +51,26 @@ def test_pdf_to_hocr_generates_expected_output():
             assert SequenceMatcher(None, r.read(), e.read()).quick_ratio() > 0.99
 
 
+@pytest.mark.parametrize(
+    'input_file, first_page, page_numbers, expected_filename',
+    [
+        ('pdf/2_pages_1_empty.pdf', 2, False, 'extract_text/2_pages_1_empty_2-2.txt'),
+        ('pdf/2_pages_1_empty.pdf', None, False, 'extract_text/2_pages_1_empty.txt'),
+        ('pdf/2_pages_1_empty.pdf', 2, True, 'extract_text_with_page_numbers/2_pages_1_empty_2-2.txt'),
+        ('pdf/2_pages_1_empty.pdf', None, True, 'extract_text_with_page_numbers/2_pages_1_empty.txt'),
+    ],
+)
+def test_extract_text_generates_expected_output_files(input_file, first_page, page_numbers, expected_filename):
+    file = test_dir / input_file
+    extractor: TesseractExtractor = TesseractExtractor(dpi=350, fmt='png')
+
+    with TemporaryDirectory() as output_dir:
+        extractor.extract_text(file, output_dir, first_page=first_page, page_numbers=page_numbers)
+        result = Path(output_dir) / Path(expected_filename).name
+        assert result.exists()
+        assert result.stat().st_size > 0
+
+
 @pytest.mark.skip('Files not guaranteed to be identical')
 @pytest.mark.parametrize(
     'input_file, first_page, page_numbers, expected_filename',
@@ -61,7 +81,7 @@ def test_pdf_to_hocr_generates_expected_output():
         ('pdf/2_pages_1_empty.pdf', None, True, 'extract_text_with_page_numbers/2_pages_1_empty.txt'),
     ],
 )
-def test_extract_text_generates_expected_output(input_file, first_page, page_numbers, expected_filename):
+def test_extract_text_generates_expected_output_content(input_file, first_page, page_numbers, expected_filename):
     file = test_dir / input_file
     extractor: TesseractExtractor = TesseractExtractor(dpi=350, fmt='png')
     expected = test_dir / 'expected/tesseract' / expected_filename
@@ -70,4 +90,21 @@ def test_extract_text_generates_expected_output(input_file, first_page, page_num
         extractor.extract_text(file, output_dir, first_page=first_page, page_numbers=page_numbers)
         result = Path(output_dir) / Path(expected_filename).name
         assert result.exists()
+        assert result.stat().st_size > 0
+
+        assert SequenceMatcher(None, result.read_text(), expected.read_text()).quick_ratio() > 0.90
         assert filecmp.cmp(result, expected) is True
+
+
+def test_extract_text_skips_existing_file():
+    file = test_dir / 'pdf/2_pages_1_empty.pdf'
+    extractor: TesseractExtractor = TesseractExtractor(dpi=350, fmt='png')
+    expected_filename = '2_pages_1_empty.txt'
+
+    with TemporaryDirectory() as output_dir:
+        output_file = Path(output_dir) / expected_filename
+        output_file.touch()  # Create an empty file to simulate existing extraction
+
+        extractor.extract_text(file, output_dir)
+        assert output_file.exists()
+        assert output_file.stat().st_size == 0  # Ensure the file was not overwritten
