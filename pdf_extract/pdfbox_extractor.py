@@ -2,7 +2,7 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from typing import List, Optional, Union
+from typing import List, Optional
 
 # TODO: No pdf2image, get page numbers from Java
 import pdf2image
@@ -24,8 +24,8 @@ class PDFBoxExtractor(ITextExtractor):
 
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
@@ -55,7 +55,7 @@ class PDFBoxExtractor(ITextExtractor):
     def batch_extract(
         self,
         files: List[Path],
-        output_folder: Union[str, os.PathLike[str]],
+        output_folder: str | os.PathLike[str],
         *,
         first_page: int = 1,
         last_page: Optional[int] = None,

@@ -5,7 +5,7 @@
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Optional, Tuple, Union
+from typing import List, Optional, Tuple
 
 import jpype
 import jpype.imports
@@ -85,7 +85,7 @@ class JavaExtractor(ITextExtractor):
 
         self.extractor = pdfextract.PDFCourier2Text(self.title_font_size, self.min_title_length)
 
-    def extract_pages(self, filename: Union[str, os.PathLike[str]]) -> ExtractedPages:
+    def extract_pages(self, filename: str | os.PathLike[str]) -> ExtractedPages:
         filename = str(filename)
         pages = []
         for pdf_page_number, content in enumerate(self.extractor.extractText(filename), start=1):
@@ -104,8 +104,8 @@ class JavaExtractor(ITextExtractor):
 
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:

@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import List, Optional
 
 import argh
 from argh import arg
@@ -32,8 +32,8 @@ def get_extractor(extractor: str) -> ITextExtractor:
 
 @arg('--extractor', choices=['JavaExtractor', 'PDFBox', 'PDFBoxHTML', 'PDFMiner', 'PDFPlumber', 'Tesseract'])
 def extract(
-    input_path: Union[str, os.PathLike[str]],
-    output_folder: Union[str, os.PathLike[str]],
+    input_path: str | os.PathLike[str],
+    output_folder: str | os.PathLike[str],
     first_page: int = 1,
     last_page: Optional[int] = None,
     extractor: str = 'PDFBox',
