@@ -31,9 +31,8 @@ class PDFBoxExtractor(ITextExtractor):
     ) -> None:
         basename = Path(filename).stem
         # TODO Remove num_pages
-        num_pages = pdf2image.pdfinfo_from_path(str(filename))['Pages']
-        if last_page is None or last_page > num_pages:
-            last_page = int(num_pages)
+        num_pages: int = pdf2image.pdfinfo_from_path(str(filename))['Pages']
+        last_page = min(last_page or num_pages, num_pages)
 
         # TODO
         # for page in p.get_pages('filename'): -> sorted list of strings (or list of strings + titles, or markup)
