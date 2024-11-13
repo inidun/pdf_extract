@@ -75,6 +75,15 @@ class TestExtractedPages:
 
 @pytest.mark.java
 class TestJavaExtractor:
+    def test_java_extractor_is_initialized_with_default_values_when_jvm_is_not_started(self, monkeypatch):
+        try:
+            monkeypatch.setattr('jpype.isJVMStarted', lambda: False)
+            extractor = JavaExtractor()
+            assert extractor.title_font_size == 5.5
+            assert extractor.min_title_length == 8
+        except OSError:
+            pass
+
     @pytest.mark.parametrize(
         'input_pdf, first_page, last_page, expected',
         [
