@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 import pdfplumber
 from loguru import logger
@@ -11,8 +11,8 @@ from pdf_extract.interface import ITextExtractor
 class PDFPlumberExtractor(ITextExtractor):
     def pdf_to_txt(
         self,
-        filename: Union[str, os.PathLike[str]],
-        output_folder: Union[str, os.PathLike[str]],
+        filename: str | os.PathLike[str],
+        output_folder: str | os.PathLike[str],
         first_page: int = 1,
         last_page: Optional[int] = None,
     ) -> None:
@@ -27,7 +27,8 @@ class PDFPlumberExtractor(ITextExtractor):
                     data = page.extract_text()
                     if data is None:
                         data = ''
-                    with open(Path(output_folder) / f'{basename}_{i+1:04}.txt', 'w', encoding='utf-8') as fp:
+                    output_path = Path(output_folder) / f'{basename}_{i+1:04}.txt'
+                    with open(output_path, 'w', encoding='utf-8') as fp:
                         fp.write(data)
         logger.success(f'Extracted: {basename}, pages: {num_pages}')
 
@@ -47,9 +48,8 @@ class PDFPlumberExtractor(ITextExtractor):
         extract_words_config: dict[str, Any] = {'use_text_flow': False}
 
         with pdfplumber.open(filename) as pdf:  # type: ignore[arg-type]
-            num_pages = len(pdf.pages)
-            if last_page is None or last_page > num_pages:
-                last_page = len(pdf.pages)
+            num_pages: int = len(pdf.pages)
+            last_page = min(last_page or num_pages, num_pages)
 
             ouput_filename: str = (
                 f'{basename}_{first_page}-{last_page}.txt'
