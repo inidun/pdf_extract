@@ -18,9 +18,8 @@ class PDFPlumberExtractor(ITextExtractor):
     ) -> None:
         basename = Path(filename).stem
         with pdfplumber.open(filename) as pdf:  # type: ignore[arg-type]
-            num_pages = len(pdf.pages)
-            if last_page is None or last_page > num_pages:
-                last_page = len(pdf.pages)
+            num_pages: int = len(pdf.pages)
+            last_page = min(last_page or num_pages, num_pages)
             pages = range(first_page - 1, last_page)
             for i in pages:
                 page = pdf.pages[i]
