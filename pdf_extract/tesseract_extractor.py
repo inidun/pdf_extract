@@ -130,9 +130,8 @@ class TesseractExtractor(ITextExtractor):
         first_page: int = first_page or 1
         basename = Path(filename).stem
 
-        num_pages = pdf2image.pdfinfo_from_path(str(filename))['Pages']
-        if last_page is None or last_page > num_pages:
-            last_page = int(num_pages)
+        num_pages: int = pdf2image.pdfinfo_from_path(str(filename))['Pages']
+        last_page = min(last_page or num_pages, num_pages)
 
         ouput_filename: str = (
             f'{basename}_{first_page}-{last_page}.txt' if last_page < num_pages or first_page > 1 else f'{basename}.txt'
