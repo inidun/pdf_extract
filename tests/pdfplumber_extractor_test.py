@@ -72,3 +72,33 @@ def test_extract_text_generates_expected_output():
         result = Path(output_dir) / 'test.txt'
         assert result.exists()
         assert filecmp.cmp(result, expected) is True
+
+
+def test_extract_text_when_output_file_exists_skips_extraction(caplog):
+    file = test_dir / 'test.pdf'
+    expected = test_dir / 'test.txt'
+    extractor: PDFPlumberExtractor = PDFPlumberExtractor()
+
+    with TemporaryDirectory() as output_dir:
+        output_file = Path(output_dir) / f'{file.stem}.txt'
+        output_file.write_text('test')
+        extractor.extract_text(file, output_dir)
+        result = Path(output_dir) / f'{file.stem}.txt'
+        assert result.exists()
+        assert filecmp.cmp(result, expected) is False
+        assert result.read_text() == 'test'
+        assert 'Skipping' in caplog.text
+        assert 'Already extracted' in caplog.text
+
+
+def test_extract_text_does_not_generate_page_numbers_when_page_numbers_is_false():
+    file = test_dir / 'test.pdf'
+    expected = test_dir / 'expected/pdfplumber/extract_text/test_no_page_numbers.txt'
+    extractor: PDFPlumberExtractor = PDFPlumberExtractor()
+
+    with TemporaryDirectory() as output_dir:
+        extractor.extract_text(file, output_dir, page_numbers=False)
+
+        result = Path(output_dir) / 'test.txt'
+        assert result.exists()
+        assert filecmp.cmp(result, expected) is True
