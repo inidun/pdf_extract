@@ -23,8 +23,7 @@ class PDFPlumberExtractor(ITextExtractor):
             pages = range(first_page - 1, last_page)
             for i in pages:
                 page = pdf.pages[i]
-                data = page.extract_text()
-                data = data or ''
+                data = page.extract_text() or ''
                 output_path = Path(output_folder) / f'{basename}_{i+1:04}.txt'
                 with open(output_path, 'w', encoding='utf-8') as fp:
                     fp.write(data)
