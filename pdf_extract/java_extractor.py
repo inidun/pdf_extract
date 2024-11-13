@@ -60,6 +60,9 @@ class ExtractedPages:
         return self.pages[index]
 
     def get_page(self, page_number: int) -> ExtractedPage:
+        # NOTE: Page numbers are 1-based
+        if page_number < 1 or page_number > len(self):
+            raise IndexError(f'Page number {page_number} out of range')
         return self[page_number - 1]
 
 
