@@ -1,4 +1,18 @@
+import os
+import subprocess
 from pathlib import Path
+
+
+def test_java_is_available():
+    result = subprocess.run(['java', '-version'], stderr=subprocess.PIPE, text=True, check=True)
+    assert result.returncode == 0, 'Java is not available'
+    version_line = result.stderr.splitlines()[0]
+    version = version_line.split('"')[1]
+    assert version, 'Java version not found'
+
+
+def test_java_home_is_set():
+    assert 'JAVA_HOME' in os.environ, 'JAVA_HOME is not set'
 
 
 def test_pdfextract_jar_exists():
