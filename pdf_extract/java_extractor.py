@@ -14,7 +14,7 @@ from packaging.version import Version
 
 from pdf_extract.interface import ITextExtractor
 
-# TODO: Fix this
+# TODO: Use config file instead
 JARFILE = '../lib/pdfextract-1.0-SNAPSHOT.jar'
 
 
